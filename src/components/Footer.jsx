@@ -11,7 +11,7 @@ export default function Footer() {
         <nav className="footer__nav">
           <a href="https://tsifraone.ru" target="_blank" rel="noopener noreferrer">tsifraone.ru</a>
           <a href="https://t.me/TsifraOne" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a href="https://vk.ru/tsifraone" target="_blank" rel="noopener noreferrer">VK</a>
+          <a href="mailto:xoroshprosto@proton.me">Email</a>
         </nav>
         <p className="footer__copy">© {new Date().getFullYear()} Tsifra. All rights reserved.</p>
       </div>

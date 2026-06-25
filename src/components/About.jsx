@@ -2,68 +2,71 @@ import { motion } from 'framer-motion'
 import './About.css'
 
 const reveal = {
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.55, ease: 'easeOut' },
+  viewport: { once: true, margin: '-80px' },
+  transition: { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] },
 }
 
 const stats = [
-  { v: '1–3', l: 'days from kickoff to launch' },
-  { v: '100%', l: 'hand-coded — no builders' },
-  { v: 'A+', l: 'SSL Labs, PageSpeed 95+' },
-  { v: '∞', l: 'revisions until you love it' },
+  { v: '1–3', u: 'days', l: 'from kickoff to launch' },
+  { v: '100', u: '%', l: 'hand-coded — no website builders' },
+  { v: '95', u: '+', l: 'PageSpeed across every project' },
+  { v: '∞', u: '', l: 'revisions until you love it' },
 ]
 
 const principles = [
   {
-    t: 'Visuals you remember',
-    d: 'WebGL, scroll-driven motion, premium typography. Your site signals «serious business» from the first second.',
+    t: 'Visuals that linger',
+    d: 'Editorial typography, scroll-driven motion, and details people screenshot. Your site should feel intentional from the first second.',
   },
   {
-    t: 'Speed and SEO from day one',
-    d: 'Pre-rendered HTML, lazy-loading, optimised images. Google and Yandex love sites like this.',
+    t: 'Engineered for speed',
+    d: 'Pre-rendered HTML, lazy-loaded media, immutable assets. Crawlers love it, users feel it.',
   },
   {
-    t: 'Security, analytics, backups',
-    d: 'CSP, HSTS, fail2ban, daily backups, full monitoring. Our Telegram bot tells you everything in real time.',
+    t: 'Secure by default',
+    d: 'CSP, HSTS, fail2ban, automated backups and live monitoring. We tell you, not the user, when something needs attention.',
   },
 ]
 
 export default function About() {
   return (
-    <section className="about">
+    <section id="about" className="ab">
       <div className="container">
-        <motion.span className="eyebrow" {...reveal}>About</motion.span>
-        <motion.h2 className="about__title" {...reveal} transition={{ ...reveal.transition, delay: 0.05 }}>
-          A small studio. <br />
-          <span className="gradient-text">A big approach to every site.</span>
+        <motion.span className="eyebrow" {...reveal}>— Studio</motion.span>
+        <motion.h2 className="ab__h2 h2" {...reveal} transition={{ ...reveal.transition, delay: 0.05 }}>
+          A small team, <br />
+          <span className="italic">large standards.</span>
         </motion.h2>
 
-        <div className="about__stats">
+        <div className="ab__stats">
           {stats.map((s, i) => (
             <motion.div
               key={s.l}
-              className="about__stat"
+              className="ab__stat"
               {...reveal}
-              transition={{ ...reveal.transition, delay: i * 0.05 }}
+              transition={{ ...reveal.transition, delay: 0.08 + i * 0.06 }}
             >
-              <span className="about__stat-v">{s.v}</span>
-              <span className="about__stat-l">{s.l}</span>
+              <span className="ab__stat-num">
+                {s.v}<span className="ab__stat-u">{s.u}</span>
+              </span>
+              <span className="ab__stat-l">{s.l}</span>
             </motion.div>
           ))}
         </div>
 
-        <div className="about__grid">
+        <div className="ab__pr">
           {principles.map((p, i) => (
             <motion.div
               key={p.t}
-              className="about__card"
+              className="ab__pr-card"
               {...reveal}
-              transition={{ ...reveal.transition, delay: i * 0.08 }}
+              transition={{ ...reveal.transition, delay: 0.12 + i * 0.07 }}
             >
-              <h3>{p.t}</h3>
-              <p>{p.d}</p>
+              <span className="ab__pr-num">0{i + 1}</span>
+              <h3 className="ab__pr-t">{p.t}</h3>
+              <p className="ab__pr-d">{p.d}</p>
             </motion.div>
           ))}
         </div>

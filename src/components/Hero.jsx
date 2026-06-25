@@ -6,73 +6,104 @@ const TG = 'https://t.me/TsifraOne'
 export default function Hero() {
   return (
     <section className="hero">
-      <header className="hero__topbar">
-        <a href="#top" className="hero__logo">Tsifra</a>
-        <nav className="hero__nav">
-          <a href="#cases">Cases</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
-          <a href={TG} target="_blank" rel="noopener noreferrer" className="hero__cta">
-            Telegram →
+      <header className="hero__top">
+        <div className="container hero__top-row">
+          <a href="#top" className="hero__brand">
+            <span className="hero__brand-mark">●</span>
+            <span>Tsifra</span>
+            <span className="hero__brand-meta">/ studio</span>
           </a>
-        </nav>
+          <nav className="hero__nav">
+            <a href="#cases">Cases</a>
+            <a href="#services">Services</a>
+            <a href="#about">Studio</a>
+            <a href="#contact">Contact</a>
+            <a href={TG} target="_blank" rel="noopener noreferrer" className="hero__cta-top">
+              Telegram
+              <span aria-hidden="true">↗</span>
+            </a>
+          </nav>
+        </div>
       </header>
 
       <div className="container hero__inner" id="top">
         <motion.span
-          className="eyebrow"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          className="eyebrow hero__eyebrow"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
         >
-          Boutique web studio
+          Boutique web studio · Worldwide
         </motion.span>
 
         <motion.h1
-          className="hero__title"
-          initial={{ opacity: 0, y: 24 }}
+          className="hero__h1 h1"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.05 }}
+          transition={{ duration: 0.85, delay: 0.05 }}
         >
-          We build websites <br />
-          <span className="gradient-text"><i>that sell</i></span>
+          Websites
+          <br />
+          <span className="italic gradient-text">that quietly</span>
+          <br />
+          <span className="italic">do the selling.</span>
         </motion.h1>
 
-        <motion.p
-          className="hero__sub"
+        <motion.div
+          className="hero__meta"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Landing pages, corporate sites, e-commerce and event invitations.
-          Premium visuals, blazing speed, clear analytics.
-          From idea to launch — in 1 to 3 days.
-        </motion.p>
+          <div className="hero__meta-block">
+            <span className="hero__meta-label">What we do</span>
+            <span className="hero__meta-text">
+              Landings, corporate sites, e-commerce and event invitations.
+              Hand-coded React, premium motion, full SEO.
+            </span>
+          </div>
+          <div className="hero__meta-block">
+            <span className="hero__meta-label">Turnaround</span>
+            <span className="hero__meta-text">1 to 3 days for a landing. 2 weeks for full corporate. Always.</span>
+          </div>
+          <div className="hero__meta-block">
+            <span className="hero__meta-label">Pricing</span>
+            <span className="hero__meta-text">From $200. Fixed quote after a 5-minute chat. No hourly surprises.</span>
+          </div>
+        </motion.div>
 
         <motion.div
           className="hero__actions"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
         >
-          <a href="#cases" className="hero__btn hero__btn--primary">See cases</a>
-          <a href={TG} target="_blank" rel="noopener noreferrer" className="hero__btn hero__btn--secondary">
-            Talk on Telegram
+          <a href="#cases" className="hero__btn hero__btn--ink">
+            See selected work
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href={TG} target="_blank" rel="noopener noreferrer" className="hero__btn hero__btn--ghost">
+            Start a project
+            <span aria-hidden="true">↗</span>
           </a>
         </motion.div>
+      </div>
 
-        <motion.div
-          className="hero__strip"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <span>In-house product <b>tsifraone.ru</b></span>
-          <span>·</span>
-          <span>Premium site for <b>Art Capital, Dubai</b></span>
-          <span>·</span>
-          <span>WebGL, 3D, scroll-driven motion</span>
-        </motion.div>
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker__row">
+          {Array.from({ length: 2 }).map((_, n) => (
+            <div className="ticker__group" key={n}>
+              <span>Landing pages</span><span>·</span>
+              <span>Corporate sites</span><span>·</span>
+              <span>E-commerce</span><span>·</span>
+              <span>Event invitations</span><span>·</span>
+              <span>SEO ready</span><span>·</span>
+              <span>WebGL · 3D · scroll-driven motion</span><span>·</span>
+              <span>tsifraone.ru</span><span>·</span>
+              <span>artcapitalrealty.com</span><span>·</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
