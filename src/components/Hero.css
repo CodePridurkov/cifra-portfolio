@@ -164,49 +164,31 @@
   border-color: var(--ink);
 }
 
-/* Bottom showreel ticker */
+/* Bottom showreel ticker — seamless via react-fast-marquee */
 .ticker {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 18px 0;
-  overflow: hidden;
   background: var(--bg-2);
-  /* избегаем subpixel-рывков при цикле */
-  contain: content;
 }
 
-.ticker__row {
-  display: flex;
-  width: max-content;
-  animation: tick 60s linear infinite;
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-.ticker__row:hover {
-  animation-play-state: paused;
-}
-
-.ticker__group {
-  display: flex;
+.ticker__item {
+  display: inline-flex;
   align-items: center;
   gap: 22px;
   padding-right: 22px;
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.3rem;
-  color: var(--text);
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
-.ticker__group span:nth-child(even) {
+.ticker__text {
+  color: var(--text);
+}
+
+.ticker__sep {
   color: var(--muted);
-}
-
-@keyframes tick {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-50%, 0, 0); }
 }
 
 @media (max-width: 900px) {

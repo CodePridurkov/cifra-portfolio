@@ -1,5 +1,17 @@
 import { motion } from 'framer-motion'
+import Marquee from 'react-fast-marquee'
 import './Hero.css'
+
+const tickerItems = [
+  'Landing pages',
+  'Corporate sites',
+  'E-commerce',
+  'Event invitations',
+  'SEO ready',
+  'WebGL · 3D · scroll-driven motion',
+  'tsifraone.ru',
+  'artcapitalrealty.com',
+]
 
 const TG = 'https://t.me/TsifraOne'
 
@@ -90,20 +102,14 @@ export default function Hero() {
       </div>
 
       <div className="ticker" aria-hidden="true">
-        <div className="ticker__row">
-          {Array.from({ length: 2 }).map((_, n) => (
-            <div className="ticker__group" key={n}>
-              <span>Landing pages</span><span>·</span>
-              <span>Corporate sites</span><span>·</span>
-              <span>E-commerce</span><span>·</span>
-              <span>Event invitations</span><span>·</span>
-              <span>SEO ready</span><span>·</span>
-              <span>WebGL · 3D · scroll-driven motion</span><span>·</span>
-              <span>tsifraone.ru</span><span>·</span>
-              <span>artcapitalrealty.com</span><span>·</span>
-            </div>
+        <Marquee speed={40} gradient={false} pauseOnHover>
+          {tickerItems.map((item, i) => (
+            <span className="ticker__item" key={i}>
+              <span className="ticker__text">{item}</span>
+              <span className="ticker__sep">·</span>
+            </span>
           ))}
-        </div>
+        </Marquee>
       </div>
     </section>
   )
