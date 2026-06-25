@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import Marquee from 'react-fast-marquee'
 import './Hero.css'
 
 const tickerItems = [
@@ -102,14 +101,18 @@ export default function Hero() {
       </div>
 
       <div className="ticker" aria-hidden="true">
-        <Marquee speed={40} gradient={false} pauseOnHover>
-          {tickerItems.map((item, i) => (
-            <span className="ticker__item" key={i}>
-              <span className="ticker__text">{item}</span>
-              <span className="ticker__sep">·</span>
-            </span>
+        <div className="ticker__row">
+          {[0, 1].map((n) => (
+            <div className="ticker__group" key={n}>
+              {tickerItems.map((item, i) => (
+                <span className="ticker__item" key={i}>
+                  <span className="ticker__text">{item}</span>
+                  <span className="ticker__sep">·</span>
+                </span>
+              ))}
+            </div>
           ))}
-        </Marquee>
+        </div>
       </div>
     </section>
   )

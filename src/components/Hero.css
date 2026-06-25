@@ -164,12 +164,33 @@
   border-color: var(--ink);
 }
 
-/* Bottom showreel ticker — seamless via react-fast-marquee */
+/* Bottom showreel ticker — pure CSS, seamless, with edge fade */
 .ticker {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 18px 0;
+  overflow: hidden;
   background: var(--bg-2);
+  /* edge fade hides any micro-jitter at loop boundary */
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.ticker__row {
+  display: flex;
+  width: max-content;
+  animation: tick 60s linear infinite;
+  will-change: transform;
+}
+
+.ticker__row:hover {
+  animation-play-state: paused;
+}
+
+.ticker__group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .ticker__item {
@@ -181,6 +202,7 @@
   font-style: italic;
   font-size: 1.3rem;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .ticker__text {
@@ -189,6 +211,11 @@
 
 .ticker__sep {
   color: var(--muted);
+}
+
+@keyframes tick {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
 @media (max-width: 900px) {
