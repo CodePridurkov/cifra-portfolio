@@ -170,24 +170,34 @@
   border-bottom: 1px solid var(--line);
   padding: 18px 0;
   overflow: hidden;
-  white-space: nowrap;
   background: var(--bg-2);
+  /* избегаем subpixel-рывков при цикле */
+  contain: content;
 }
 
 .ticker__row {
-  display: inline-flex;
-  animation: tick 40s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: tick 60s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.ticker__row:hover {
+  animation-play-state: paused;
 }
 
 .ticker__group {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 22px;
+  padding-right: 22px;
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.3rem;
   color: var(--text);
-  padding-right: 22px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .ticker__group span:nth-child(even) {
@@ -195,8 +205,8 @@
 }
 
 @keyframes tick {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
 @media (max-width: 900px) {
