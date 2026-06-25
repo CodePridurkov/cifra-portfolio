@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { cases } from '../data/cases'
-import CasePreview from './CasePreview'
 import './Cases.css'
 
 const reveal = {
@@ -11,7 +10,6 @@ const reveal = {
 }
 
 // Bento layout — assigns each case a tile size by index.
-// 0 = main hero tile, 1-2 = small accents, 3-4 = medium, 5 = wide banner.
 const tiles = ['hero', 'sm', 'sm', 'md', 'md', 'wide']
 
 export default function Cases() {
@@ -42,10 +40,6 @@ export default function Cases() {
                 {...reveal}
                 transition={{ ...reveal.transition, delay: 0.05 + i * 0.06 }}
               >
-                <div className="tile__visual">
-                  <CasePreview slug={c.slug} icon={c.icon} />
-                </div>
-
                 <div className="tile__shade" aria-hidden="true" />
 
                 <div className="tile__body">
@@ -83,13 +77,13 @@ export default function Cases() {
                     </div>
                   )}
 
-                  {c.url && (size === 'hero' || size === 'md') && (
+                  {/* Visit button for any tile that has a live URL */}
+                  {c.url && (
                     <a
                       href={c.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="tile__cta"
-                      onClick={(e) => e.stopPropagation()}
                     >
                       Visit <span aria-hidden="true">↗</span>
                     </a>

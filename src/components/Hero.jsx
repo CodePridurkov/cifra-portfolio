@@ -1,17 +1,6 @@
 import { motion } from 'framer-motion'
 import './Hero.css'
 
-const tickerItems = [
-  'Landing pages',
-  'Corporate sites',
-  'E-commerce',
-  'Event invitations',
-  'SEO ready',
-  'WebGL · 3D · scroll-driven motion',
-  'tsifraone.ru',
-  'artcapitalrealty.com',
-]
-
 const TG = 'https://t.me/TsifraOne'
 
 export default function Hero() {
@@ -100,20 +89,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div className="ticker" aria-hidden="true">
-        <div className="ticker__row">
-          {[0, 1].map((n) => (
-            <div className="ticker__group" key={n}>
-              {tickerItems.map((item, i) => (
-                <span className="ticker__item" key={i}>
-                  <span className="ticker__text">{item}</span>
-                  <span className="ticker__sep">·</span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
     </section>
   )
 }
